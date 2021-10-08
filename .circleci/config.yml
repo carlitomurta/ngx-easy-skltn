@@ -1,21 +1,85 @@
-# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
-version: 2.1
+version: 2
 
-# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
-# See: https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  node: circleci/node@4.7
+docker_defaults: &docker_defaults
+  docker:
+    - image: circleci/node:14.11.0-browsers
+  working_directory: ~/project/repo
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+attach_workspace: &attach_workspace
+  attach_workspace:
+    at: ~/project
+
+install_steps: &install_steps
+  steps:
+    - checkout
+    - restore_cache:
+        name: Restore node_modules cache
+        keys:
+          - dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+          - dependency-cache-{{ .Branch }}-
+          - dependency-cache-
+    - run:
+        name: Installing Dependencies
+        command: |
+          npm install --silent
+    - save_cache:
+        name: Save node_modules cache
+        key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+        paths:
+          - node_modules/
+    - persist_to_workspace:
+        root: ~/project
+        paths:
+          - repo
+
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  version: 2
+  build_pipeline:
     jobs:
-      - node/test:
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
-          version: "16.10"
-          # If you are using yarn, change the line below from "npm" to "yarn"
-          pkg-manager: npm
+      - build
+      - unit_test:
+          requires:
+            - build
+      - bundle_size:
+          requires:
+            - build
+      - build_ssr:
+          requires:
+            - build
+jobs:
+  build:
+    <<: *docker_defaults
+    <<: *install_steps
+  unit_test:
+    <<: *docker_defaults
+    steps:
+      - *attach_workspace
+      - run:
+          name: Running unit tests
+          command: |
+            sudo npm run lint
+            sudo npm test
+            sudo npm run coveralls
+  build_ssr:
+    <<: *docker_defaults
+    steps:
+      - *attach_workspace
+      - run:
+          environment:
+            NG_CLI_ANALYTICS: "false"
+          name: Building for Angular Universal
+          command: |
+            sudo NG_CLI_ANALYTICS="false" npm rebuild
+            sudo npm run build:ssr
+  bundle_size:
+    <<: *docker_defaults
+    steps:
+      - *attach_workspace
+      - run:
+          environment:
+            NG_CLI_ANALYTICS: "false"
+          name: Checking bundle size
+          command: |
+            sudo NG_CLI_ANALYTICS="false" npm rebuild
+            sudo npm run build:pkg
+            sudo npm run bundlesize
