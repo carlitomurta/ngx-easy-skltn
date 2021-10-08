@@ -1,14 +1,51 @@
 {
   "name": "ngx-easy-skltn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test --watch=false --no-progress --code-coverage && ng test ngx-easy-skltn --watch=false --no-progress --code-coverage",
+    "tdd": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "bundlesize": "bundlesize",
+    "build:pkg": "ng build ngx-easy-skltn --prod",
+    "update-library-version": "node ./scripts/build.js && copy *.md dist/ngx-easy-skltn",
+    "postversion": "git push && git push --tags",
+    "prepublish": "npm run build && npm run build:pkg && npm run update-library-version",
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && npm run build:pkg && npm run update-library-version && git add .",
+    "coveralls": "cat ./coverage/ngx-easy-skltn/lcov.info | ./node_modules/.bin/coveralls && rm -rf coverage",
+    "postinstall": "ngcc"
   },
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "ngx",
+    "skeleton",
+    "skeleton-screen",
+    "ghost",
+    "loader",
+    "ngx-easy-skltn",
+    "facebook-loading",
+    "loading",
+    "animation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CarlitoMurta/ngx-easy-skltn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CarlitoMurta/ngx-easy-skltn/issues"
+  },
+  "homepage": "https://github.com/CarlitoMurta/ngx-easy-skltn#readme",
+  "bundlesize": [
+    {
+      "path": "./dist/ngx-easy-skltn/bundles/ngx-easy-skltn.umd.min.js",
+      "maxSize": "2.1KB"
+    }
+  ],
   "dependencies": {
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
@@ -27,14 +64,29 @@
     "@angular/cli": "~12.2.9",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
+    "@types/jasminewd2": "^2.0.10",
     "@types/node": "^12.11.1",
+    "bundlesize": "^0.18.1",
+    "changelog-verify": "^1.1.2",
+    "codelyzer": "^6.0.2",
+    "coveralls": "^3.1.1",
     "jasmine-core": "~3.8.0",
+    "jasmine-spec-reporter": "^7.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^12.1.1",
-    "typescript": "~4.3.5"
+    "protractor": "^7.0.0",
+    "ts-node": "^10.2.1",
+    "tsickle": "^0.43.0",
+    "tslint": "^6.1.3",
+    "typescript": "~4.3.5",
+    "version-changelog": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
