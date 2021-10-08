@@ -1,7 +1,42 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "99c3e870-0c4b-4244-a1a8-1d36c8b869ca"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ngx-easy-skltn": {
+      "projectType": "library",
+      "root": "projects/ngx-easy-skltn",
+      "sourceRoot": "projects/ngx-easy-skltn/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-easy-skltn/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-easy-skltn/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-easy-skltn/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-easy-skltn/src/test.ts",
+            "tsConfig": "projects/ngx-easy-skltn/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-easy-skltn/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-easy-skltn"
 }
