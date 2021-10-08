@@ -1,27 +1,35 @@
-# NgxSmartSkltn
+# ngx-easy-skltn
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
+[![npm downloads](https://img.shields.io/npm/dm/ngx-easy-skltn.svg)](https://npmjs.org/ngx-easy-skltn)
+[![Build Status](https://circleci.com/gh/CarlitoMurta/ngx-easy-skltn.svg?style=shield)](https://circleci.com/gh/CarlitoMurta/ngx-easy-skltn)
+[![Coverage Status](https://coveralls.io/repos/CarlitoMurta/ngx-easy-skltn/badge.svg?branch=master)](https://coveralls.io/r/CarlitoMurta/ngx-easy-skltn?branch=master)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ngx-easy-skltn.svg)](https://bundlephobia.com/result?p=ngx-easy-skltn)
+[![npm](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](/LICENSE)
 
-## Development server
+[Translate to English](#english)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## O que são esqueletos?
 
-## Code scaffolding
+![Spooky skeletons](https://media1.giphy.com/media/HxZ3prK9hIDsc/giphy.gif?cid=790b761146888a2ab8a16547c9256443c207a55b48e77140&rid=giphy.gif&ct=g)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+As **skeletons screens** são basicamente uma página em branco que dentro dela tem alguns blocos demarcados, onde o conteúdo será carregado gradualmente.
 
-## Build
+Elas ajudam a transmitir a sensação de alta performance no carregamento do conteúdo.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Veja esse exemplo maravilhoso: De um lado temos a estrutura usando skeleton screens e do outro temos o uso do tradicional spinners indicator.
 
-## Running unit tests
+![Exemplo](https://miro.medium.com/max/700/1*Cae2SJzfOelkfTuDYSuRRw.gif)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+O intuito desse pacote de componentes é trazer a facilidade de integração do **skeleton** à aplicações pequenas ou grandes.
 
-## Running end-to-end tests
+O nosso diferencial é a possibilidade de criar suas **skeleton screens** da forma que quiser, desde componente à componente, ou usar nossa **ferramenta de geração de template**.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## Roadmap
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [ ] Componentes únicos
+- [ ] Gerador de skeleton screens
+- [ ] Customização / Temas
+
+---
