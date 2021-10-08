@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: ` <p>ngx-easy-skltn works!</p> `,
   styles: [],
 })
-export class NgxSmartSkltnComponent implements OnInit {
+export class NgxEasySkltnComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

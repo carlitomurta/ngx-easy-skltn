@@ -1,25 +1,35 @@
-# NgxSmartSkltn
+# ngx-easy-skltn
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+[![npm downloads](https://img.shields.io/npm/dm/ngx-easy-skltn.svg)](https://npmjs.org/ngx-easy-skltn)
+[![Build Status](https://circleci.com/gh/CarlitoMurta/ngx-easy-skltn.svg?style=shield)](https://circleci.com/gh/CarlitoMurta/ngx-easy-skltn)
+[![Coverage Status](https://coveralls.io/repos/CarlitoMurta/ngx-easy-skltn/badge.svg?branch=master)](https://coveralls.io/r/CarlitoMurta/ngx-easy-skltn?branch=master)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ngx-easy-skltn.svg)](https://bundlephobia.com/result?p=ngx-easy-skltn)
+[![npm](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](/LICENSE)
 
-## Code scaffolding
+[Translate to English](#english)
 
-Run `ng generate component component-name --project ngx-easy-skltn` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-easy-skltn`.
+## O que são esqueletos?
 
-> Note: Don't forget to add `--project ngx-easy-skltn` or else it will be added to the default project in your `angular.json` file.
+![Spooky skeletons](https://media1.giphy.com/media/HxZ3prK9hIDsc/giphy.gif?cid=790b761146888a2ab8a16547c9256443c207a55b48e77140&rid=giphy.gif&ct=g)
 
-## Build
+As **skeletons screens** são basicamente uma página em branco que dentro dela tem alguns blocos demarcados, onde o conteúdo será carregado gradualmente.
 
-Run `ng build ngx-easy-skltn` to build the project. The build artifacts will be stored in the `dist/` directory.
+Elas ajudam a transmitir a sensação de alta performance no carregamento do conteúdo.
 
-## Publishing
+Veja esse exemplo maravilhoso: De um lado temos a estrutura usando skeleton screens e do outro temos o uso do tradicional spinners indicator.
 
-After building your library with `ng build ngx-easy-skltn`, go to the dist folder `cd dist/ngx-easy-skltn` and run `npm publish`.
+![Exemplo](https://miro.medium.com/max/700/1*Cae2SJzfOelkfTuDYSuRRw.gif)
 
-## Running unit tests
+O intuito desse pacote de componentes é trazer a facilidade de integração do **skeleton** à aplicações pequenas ou grandes.
 
-Run `ng test ngx-easy-skltn` to execute the unit tests via [Karma](https://karma-runner.github.io).
+O nosso diferencial é a possibilidade de criar suas **skeleton screens** da forma que quiser, desde componente à componente, ou usar nossa **ferramenta de geração de template**.
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Roadmap
+
+- [ ] Componentes únicos
+- [ ] Gerador de skeleton screens
+- [ ] Customização / Temas
+
+---

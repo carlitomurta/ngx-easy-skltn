@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgxSmartSkltnService } from './ngx-easy-skltn.service';
+import { NgxEasySkltnService } from './ngx-easy-skltn.service';
 
-describe('NgxSmartSkltnService', () => {
-  let service: NgxSmartSkltnService;
+describe('NgxEasySkltnService', () => {
+  let service: NgxEasySkltnService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgxSmartSkltnService);
+    service = TestBed.inject(NgxEasySkltnService);
   });
 
   it('should be created', () => {
