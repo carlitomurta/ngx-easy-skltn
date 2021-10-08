@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "bundlesize": "bundlesize",
     "build:pkg": "ng build ngx-easy-skltn --prod",
-    "update-library-version": "node ./scripts/build.js && copy *.md dist/ngx-easy-skltn",
+    "update-library-version": "node ./scripts/build.js && cp -f *.md dist/ngx-easy-skltn",
     "postversion": "git push && git push --tags",
     "prepublish": "npm run build && npm run build:pkg && npm run update-library-version",
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && npm run build:pkg && npm run update-library-version && git add .",
